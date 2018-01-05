@@ -1,0 +1,365 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% template_ppt.tex
+%% Copyright 2017 Elias Alves @unixelias
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Elias Alves @unixelias
+%
+% This work consists of the files pig.dtx and the derived
+% file beamerthemeAir.sty.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Template para Apresentações tipo PPT
+%% LaTeX Template
+%% Version 1.0 (20/12/2017)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Esse template teve como base:
+%% https://pt.sharelatex.com/templates/presentations/air-beamer-template
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document License:
+% CC BY-NC-SA 4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+% Para saber como usar o template "beamer" veja o link:
+%%http://w3.ufsm.br/petmatematica/images/minicursos/Apostilas/apostila_minicurso_beamer.pdf
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{beamer}
+%% Para retirar seções
+%%\documentclass[12pt,handout]{beamer}
+
+\usepackage{beamerthemeAir}
+\usepackage{thumbpdf}
+\usepackage{wasysym}
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage[T1]{fontenc} 
+\usepackage{ae} 
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{verbatim}
+\usepackage{graphicx} % para inclusão de imagens
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+\usepackage{minted}
+\definecolor{fundo-cod}{rgb}{0.95,0.95,0.95}
+\definecolor{exemplo}{HTML}{EAF3FA}
+% ---
+% para tratar urls longas
+\usepackage{url}				% para tratar URLs longas
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+% ---
+% Pacotes para inserir licença do documento
+% ---
+\usepackage[
+	type={CC},
+	modifier={by-nc-sa},
+	version={4.0},
+	]{doclicense}
+
+
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{movie15}
+%\usepackage{multimedia}
+%\usepackage{geometry}
+%% Para inserir comentarios nos slides
+%% Cria um slide na tela ao lado com as anotações
+\usepackage{pgfpages}
+%\setbeameroption{show notes}
+%\setbeameroption{show notes on second screen=right}
+
+% Imprimir slides para envio 4x1
+%\pgfpagesuselayout{4 on 1}[a4paper,landscape]
+
+
+\pdfinfo
+{
+	/Title		(Bancos de Dados II)
+	/Subtitle		(Armazenamento)
+	/Creator		(Departamento de Computação UFVJM - 2017)
+	/Author		(Elias Alves)
+	/Subject		(Disciplina especial 2017-4-esp)
+}
+
+
+\title[Abrev. Tít]{Título do Trabalho}
+\subtitle{Subtítulo}
+\author[Elias Alves]{Professor Elias Alves}
+\institute{Universidade Federal dos Vales do Jequitinhonha e Mucurí \\
+	\includegraphics[width=.2\textwidth,height=.3\textheight]{../img/main/brasao_ufvjm}%
+}
+\date{dezembro de 2017}
+
+\begin{document}
+	
+	%%----------------------------------------------------------------------
+	\begin{frame}
+	\maketitle
+	\end{frame}
+%%----------------------------------------------------------------------
+\AtBeginSection[]
+{
+	\frame<handout:0>
+	{
+		\frametitle{Sumário}
+		\tableofcontents[currentsection=show,
+		currentsubsection=show, 
+		hideothersubsections, 
+		sectionstyle=show,
+		subsectionstyle=show,]
+	}
+}
+
+\AtBeginSubsection[]
+{
+	\frame<handout:0>
+	{
+		\frametitle{Índice}
+		\tableofcontents[currentsection=show/shaded,
+		currentsubsection=show/shaded, 
+		hideothersubsections, 
+		sectionstyle=show/shaded,
+		subsectionstyle=show/shaded,
+		]
+	}
+}
+
+\newcommand<>{\highlighton}[1]{%
+	\alt#2{\structure{#1}}{{#1}}
+}
+
+\newcommand{\icon}[1]{\pgfimage[height=1em]{#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Slides começam aqui %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+\begin{frame}
+  \frametitle{Prerequisites \& Goals}
+  \framesubtitle{Knowledge is a brick wall that you raise line by line forever}
+  \begin{block}{LaTeX}
+  \begin{itemize}
+    \item Obviously some basic LaTeX knowledge is necessary
+    \item Some more features will be provided here
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{Beamer}
+  \begin{itemize}
+    \item You'll learn them by looking at this presentation source
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{Goal}
+  \begin{itemize}
+    \item Learn how to make well structured slides
+    \item Using a beautiful theme (congrats to the Oxygen team!)
+    \item Take over the world
+    \item Relax...
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{Basic structuring}
+\begin{frame}
+  \frametitle{Sections, Frames and Blocks}
+  \framesubtitle{Put everything into boxes}
+
+  The current section is "Basic structuring". And the current frame
+  is what you have on the screen right now.
+
+  \begin{block}{A beautiful block}
+  A block has a title, and some content. You can put in a block
+  almost everything you want that is provided by LaTeX. For example
+  math works as usual:
+    \begin{equation}
+    \sum_{i=1}^n i = \frac{n \times (n+1)}{2}
+    \end{equation}
+  \end{block}
+
+  Also works outside a block:
+  \begin{equation}
+  \sum_{i=1}^n i^2 = \frac{n \times (n+1) \times (2n+1)}{6}
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Different type of blocks}
+  \framesubtitle{Weeeee! Colors!!}
+  \begin{block}{Standard block}
+  \begin{itemize}
+    \item A standard block, used for grouping
+    \item Obviously can contain itemizes too...
+    \begin{itemize}
+      \item And nested itemizes...
+      \item of course!
+    \end{itemize}
+  \end{itemize}
+  \end{block}
+  \begin{alertblock}{Alert block}
+  WARNING: Something very important inside this block!
+  \end{alertblock}
+  \begin{example}
+  Note that examples are displayed as a special block...
+  \end{example}
+\end{frame}
+
+\section{Fancy features}
+\begin{frame}
+  \frametitle{Highlighting}
+  \framesubtitle{Hey! Look here! here!}
+
+  \begin{block}{A regular block}
+  \begin{itemize}
+    \item Normal text
+    \item \highlighton{Highlighted text} to draw attention
+    \item \alert{"Alert'ed" text} to spot very important information
+    \item Alternatively you can
+    \begin{itemize}
+      \alert{\item "Alert" the item itself}
+      \highlighton{\item Or "Highlight" it}
+    \end{itemize}
+  \end{itemize}
+  \end{block}
+  \begin{alertblock}{If it's very very important...}
+  \alert{... you can "alert" in an "alertblock"}\\
+  Ewww, nasty, heh?
+  \end{alertblock}
+\end{frame}
+
+\newcommand{\putlink}[1]{%
+   \pgfsetlinewidth{1.4pt}%
+   \pgfsetendarrow{\pgfarrowtriangle{4pt}}%
+   \pgfline{\pgfxy(1,1)}{\pgfxy(#1,1)}
+}
+
+\begin{frame}
+  \frametitle{Overlay effects}
+  \framesubtitle{Keep the suspense!}
+  \begin{block}{Time bomb}
+  \begin{enumerate}
+    \item<2-> Two more to go
+    \item<3-> One more to go
+    \item<4-> Last chance...
+    \item<5-> BOOM!
+  \end{enumerate}
+  \end{block}
+  \begin{block}{"Animation"}<6->
+    \begin{pgfpicture}{0cm}{0cm}{7cm}{2cm}
+    \only<1-6>{
+      \putlink{2}
+    }
+    \only<7>{
+      \putlink{4}
+    }
+    \only<8>{
+      \putlink{6}
+    }
+    \only<9>{
+      \putlink{8}
+    }
+    \only<10>{
+      \putlink{10}
+    }
+    \end{pgfpicture}
+  \end{block}
+\end{frame}
+
+\section*{}
+\frame{
+  \vfill
+  \centering
+  \highlighton{
+  \usebeamerfont*{frametitle}And now?
+
+  \usebeamerfont*{framesubtitle}Enter the secret section
+  }
+  \vfill
+}
+\begin{frame}
+  \frametitle{Contributing to this beamer style}
+  \framesubtitle{We want you !}
+
+  \begin{block}{Why?}
+  \begin{itemize}
+    \item Beamer is hot!
+    \item This style deserves to be improved
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{How?}
+  \begin{itemize}
+    \item Grab it
+    \item Improve its LaTeX code
+    \item Use you artistics skills
+    \item Document it
+    \item Help other people to use it
+    \item Use it...
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Resources}
+  \framesubtitle{If you want to improve this style}
+  \begin{thebibliography}{10}
+
+  \beamertemplatearticlebibitems
+
+  \bibitem{beamer-homepage}
+    LaTeX Beamer
+    \newblock {\tt http://latex-beamer.sourceforge.net/}
+
+  \bibitem{kdeslides}
+    KDE Presentations
+    \newblock {\tt http://www.kde.org/kdeslides/}
+
+  \end{thebibliography}
+\end{frame}
+
+\frame{
+  \vspace{2cm}
+  {\huge Questions ?}
+
+  \vspace{3cm}
+  \begin{flushright}
+    Konqi Konqueror
+
+    \structure{\footnotesize{konqi@kde.org}}
+  \end{flushright}
+}
+\frame{
+	\frametitle{Perguntas ?}
+	\vspace*{\fill}
+	{\huge Boas Festas!}  
+	\vspace*{\fill}
+	\begin{flushright}
+		Elias C. Alves \\
+		@unixelias \\
+		% imprime a licença do trabalho
+		\structure{\footnotesize{Decom/FACET - 2017}}
+	\end{flushright}
+	\begin{center}
+		\doclicenseThis
+	\end{center}
+}
+\end{document}

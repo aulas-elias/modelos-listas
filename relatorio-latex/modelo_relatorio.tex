@@ -1,0 +1,306 @@
+%----------------------------------------------------------------------------%
+% modelo_relatorio.tex
+% Copyright 2017 Elias Alves @unixelias
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Elias Alves @unixelias
+%
+% This work consists of the files modelo_relatorio.dtx
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Template para Apresentações tipo PPT
+%% LaTeX Template
+%% Version 1.0 (20/12/2017)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article} 
+\usepackage[a4paper,left=30mm,right=25mm,top=30mm,bottom=25mm,headsep=15.5mm]{geometry} 
+
+\usepackage[brazilian]{babel}                                
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{enumitem}
+\usepackage{ragged2e}
+
+\usepackage{ae} 
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{verbatim}
+\usepackage{graphicx} 	% para inclusão de imagens
+\usepackage{url}
+\usepackage{minted} 	% inclusão de exemplos de código
+\definecolor{fundo-cod}{rgb}{0.95,0.95,0.95}
+\definecolor{exemplo}{HTML}{EAF3FA}
+% ---
+% para tratar urls longas
+\usepackage{url}				% para tratar URLs longas
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+% ---
+% Pacotes para inserir licença do documento
+% ---
+\usepackage[
+	type={CC},
+	modifier={by-sa},
+	version={4.0},
+	]{doclicense}
+
+
+\usepackage{indentfirst,graphicx} 
+\usepackage[absolute]{textpos}
+
+
+%----------------- ENTRADA DE DADOS -----------------------------
+%================================================================
+%---- Altere esses dados para preencher capa e folha de rosto ---
+%================================================================
+\def\titulotrabalho{Título do Trabalho}
+\def\autores{Autor Um\\Autor Dois\\Autor Três}
+\def\docente{Elias Alves}
+\def\disciplina{Bancos de Dados II}
+\def\tema{Tema para o seu trabalho}
+\def\tipotrabalho{Trabalho prático?}
+\def\dataentrega{02/01/2017}
+\def\universidade{Universidade Federal dos Vales do Jequitinhonha e Mucuri}
+\def\faculdade{Faculdade de Ciências Exatas e Tecnológicas - FACET}
+\def\departamento{Departamento de Computação - Decom}
+\def\curso{Sistemas de Informação}
+\def\cidade{Diamantina}
+\def\estado{MG}
+
+%--------------------------- CAPA -------------------------------
+%================================================================
+%------------------------- Cabeçalho ----------------------------
+%================================================================
+\begin{document}
+\pagestyle{myheadings}
+\newpage
+\pagenumbering{arabic} 
+\setcounter{page}{1}
+\renewcommand{\thepage}{\arabic{page}}
+\thispagestyle{empty}
+
+\begin{center}
+    \begin{textblock*}{\linewidth}(2cm,1cm)%{width}[xt,yt](X,Y)
+	    \raggedright
+	    \includegraphics[width=0.17\linewidth]{../img/main/armas_brasil.eps}
+    \end{textblock*} ~\\[1em]
+	\begin{textblock*}{\linewidth}(4cm,1cm)%{width}[xt,yt](X,Y)
+		\raggedleft
+		\includegraphics[width=0.17\linewidth]{../img/main/logo_ufvjm.eps}
+	\end{textblock*} ~\\[1em]
+	\begin{textblock*}{0.73\linewidth}(5.1cm,1.4cm)%{width}[xt,yt](X,Y)
+		\centering
+			\bfseries\small\MakeUppercase{\universidade} \par
+			\bfseries\scriptsize\MakeUppercase{\faculdade} \par
+			\bfseries\scriptsize\MakeUppercase{\departamento} \par
+			\bfseries\scriptsize\MakeUppercase{\curso} \par
+	\end{textblock*} ~\\[1.5em]
+\end{center}
+%% Fim do cabeçalho
+%---------------------------
+\par %
+\vfill
+\vfill
+\begin{center}
+	\MakeUppercase\disciplina
+\end{center}
+\vfill
+\vfill
+\vfill
+\begin{flushright}
+	\autores
+\end{flushright}
+\vfill
+\begin{center}
+	\cidade{ }- Dezembro de 2017 
+\end{center}
+\clearpage
+%================================================================
+%------------------------- Folha de rosto -----------------------
+%================================================================
+\thispagestyle{empty}
+\begin{center}
+	\MakeUppercase{\universidade}
+\end{center}
+\vfill
+\begin{center}
+	\small\bfseries\MakeUppercase{\tema}
+\end{center}
+\vfill
+\begin{flushright}
+	\autores
+\end{flushright}
+\par
+\begin{flushright}
+	\begin{textblock*}{0.5\linewidth}(11cm,18.4cm)%{width}[xt,yt](X,Y)
+		\justifying Trabalho a ser apresentado à disciplina \disciplina, ministrada pelo professor \docente, no Curso de \curso, da \universidade.
+	\end{textblock*} ~\\[1em]
+\end{flushright}
+\vfill
+\vfill
+\vfill
+\begin{center}
+	\cidade{ }- Dezembro de 2017 
+\end{center}
+\cleardoublepage
+%================================================================
+% ---------------- FIM DAS PARTES AUTOMÁTICAS -------------------
+%================================================================
+% Começe a editar seu trabalho a partir dessa parte. Você poderá 
+% criar capítuos, seções e os diversos elementos do Latex.
+% Use pacotes adicionais para expandir esse documento.
+%================================================================
+%----------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------%
+% Descrição das ferramentas pesquisadas.
+% * Dividimos em seções por assunto e em cada assunto, uma subseção descreve 
+%   a ferramenta a ser apresentada.
+% * Existem alguns campos como exemplo, mas podemos acrescentar outros se
+%   necessário
+%----------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------%
+% Início de seção
+\section{Assunto}
+
+%----------------------------------------------------------------------------%
+% Início de subseção
+\subsection{Nome da Ferramenta}
+
+\subsubsection{Descrição}
+Breve descrição da ferramenta
+
+Caso você precise representar um código, você poderá usar esse modelo. Pesquise sobre a classe ``minted'' do Latex para suporte a outras linguagens.
+
+\begin{minted}[linenos=true,frame=lines,fontsize=\footnotesize,bgcolor=fundo-cod]{plpgsql}
+SELECT numero_conta, nome_agencia 
+FROM banco.conta c 
+JOIN banco.agencia a 
+ON c.cod_agencia=a.cod_agencia;
+\end{minted}
+
+\subsubsection{Formato de dados}
+Descrição do formato dos dados, quantidade de dados
+
+\subsubsection{Limite de usuários}
+Descrever como é tratado o limite de usuários da ferramenta
+
+\subsubsection{API}
+Descrição das APIs da ferramenta
+
+\subsubsection{Extensões}
+Descrição dos plugins e/ou extensões de interesse
+
+\subsubsection{Licença}
+Descrição da licença da ferramenta
+
+\subsubsection{Hospedagem e segurança de dados}
+Descrição das implicações da política de segurança da informação e política de privacidade dos dados
+
+\subsubsection{Observações}
+Observações, se necessário
+
+\clearpage
+% Fim de Subseção
+%----------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------%
+% Início de subseção
+\subsection{Nome da Ferramenta}
+
+\subsubsection{Descrição}
+Breve descrição da ferramenta
+
+\subsubsection{Formato de dados}
+Descrição do formato dos dados, quantidade de dados
+
+\subsubsection{Limite de usuários}
+Descrever como é tratado o limite de usuários da ferramenta
+
+\subsubsection{API}
+Descrição das APIs da ferramenta
+
+\subsubsection{Extensões}
+Descrição dos plugins e/ou extensões de interesse
+
+\subsubsection{Licença}
+Descrição da licença da ferramenta
+
+\subsubsection{Hospedagem e segurança de dados}
+Descrição das implicações da política de segurança da informação e política de privacidade dos dados
+
+\subsubsection{Observações}
+Observações, se necessário
+
+\clearpage
+% Fim de Subseção
+%----------------------------------------------------------------------------%
+% Fim de Seção
+%----------------------------------------------------------------------------%
+
+
+%----------------------------------------------------------------------------%
+% Início de seção
+\section{Assunto seguinte}
+
+%----------------------------------------------------------------------------%
+% Início de subseção
+\subsection{Nome da Ferramenta}
+
+\subsubsection{Descrição}
+Breve descrição da ferramenta
+
+\subsubsection{Formato de dados}
+Descrição do formato dos dados, quantidade de dados
+
+\subsubsection{Limite de usuários}
+Descrever como é tratado o limite de usuários da ferramenta
+
+\subsubsection{API}
+Descrição das APIs da ferramenta
+
+\subsubsection{Extensões}
+Descrição dos plugins e/ou extensões de interesse
+
+\subsubsection{Licença}
+Descrição da licença da ferramenta
+
+\subsubsection{Hospedagem e segurança de dados}
+Descrição das implicações da política de segurança da informação e política de privacidade dos dados
+
+\subsubsection{Observações}
+Observações, se necessário
+
+\clearpage
+% Fim de Subseção
+%----------------------------------------------------------------------------%
+% Fim de Seção
+%----------------------------------------------------------------------------%
+% Informações de licença do documento final (Opcional)
+%----------------------------------------------------------------------------%
+\vfill{}
+\begin{center}
+\doclicenseThis
+\end{center}
+\begin{center}
+\textbf{\textcopyleft\docente}{ }- Decom/FACET - UFVJM
+\end{center}
+%----------------------------------------------------------------------------%
+
+\end{document}
