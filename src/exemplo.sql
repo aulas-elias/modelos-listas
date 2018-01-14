@@ -10,7 +10,7 @@
 -- Lista 1
 
 
--- Exercício 1.1-b 
+-- Exercício 1.1-b
 -- Query que .....
 
 SELECT nome_cd, preco_venda, CASE
@@ -34,3 +34,17 @@ CREATE VIEW salario_por_departamento
 	FROM funcionario f JOIN departamento d ON (f.
 	cod_depto = d.cod_depto )
 	GROUP by nome_depto ;
+
+
+	-- Exercício 1.1-b
+	-- Query que .....
+
+	SELECT nome_cd, preco_venda, CASE
+		WHEN preco_venda < 10 THEN
+		preco_venda * 0.9
+		WHEN preco_venda >=10 AND preco_venda < 13 THEN
+		preco_venda * .8
+		ELSE
+		preco_venda * .7
+		END venda
+	FROM cd ;
